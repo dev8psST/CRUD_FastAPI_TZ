@@ -1,0 +1,5 @@
+databases[mysql]
+fastapi
+pymysql
+uvicorn
+sqlalchemy

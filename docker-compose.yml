@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mysql_db:
+    image: mariadb:10.6
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "test"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_db_data:/var/lib/mysql:rw
+      
+
+
+  adminer:
+    image: adminer:latest
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql_db
+    links:
+      - mysql_db
+    ports:
+      - 99:8080
+
+
