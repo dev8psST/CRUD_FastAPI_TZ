@@ -7,8 +7,4 @@ Install requirements<br>
   DB: test
   host: mysql_db</pre>
 
-  <style>
-    body{
-      background-color: blue;
-    }
-  </style>
+
