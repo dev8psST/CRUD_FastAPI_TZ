@@ -6,3 +6,9 @@ Install requirements<br>
   password: password
   DB: test
   host: mysql_db</pre>
+
+  <style>
+    body{
+      background-color: blue;
+    }
+  </style>
