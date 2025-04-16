@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, APIRouter
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
+from datetime import date, datetime, time, timedelta
 import databases
 import pymysql
 from databases import Database
@@ -38,6 +39,21 @@ class Category(BaseModel):
 
     name: str
 
+class UserData(BaseModel):
+
+    email: str
+    city: str
+    name: str
+    date_register: date
+    salary_in_year: float
+    number_phone: str
+    
+    @validator("date_register", pre=True)
+    def parse_date(cls, value):
+        return datetime.strptime(
+            value,
+            "%d/%m/%Y"
+        ).date()
 
 # API Router instance
 router = APIRouter()
