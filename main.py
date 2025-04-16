@@ -99,6 +99,14 @@ async def get_post(post_id: int):
         raise HTTPException(status_code=404, detail="Post not found")
     return post
 
+# Get aurhor by ID endpoint
+@router.get("/authors/{author_id}")
+async def get_authors(author_id: int):
+    query = "SELECT * FROM authors WHERE id = :id"
+    get = await database.fetch_one(query=query, values={"id": author_id})
+    if get is None:
+        raise HTTPException(status_code=404, detail="Author not found")
+    return get
 
 # Update post endpoint
 @router.put("/posts/{post_id}")
