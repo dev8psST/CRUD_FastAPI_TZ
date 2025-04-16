@@ -50,6 +50,17 @@ class Tag(Base):
     posts = relationship("Post", back_populates="tags")
 
 
+class UserData(Base):
+    __tablename__ = "user_data"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    email = Column(String, nullable=False)
+    city = Column(String, nullable=False)
+    name = Column(String, nullable=False)
+    date_register = Column(Date, nullable=False)
+    salary_in_year = Column(Float, nullable=False)
+    number_phone = Column(String, nullable=False)
+
 # Create tables in the database
 Base.metadata.create_all(bind=engine)
 
